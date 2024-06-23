@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STORE</title>
+<style>
+  /* Internal CSS */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('bgS.jpg'); /* Set the background image */
+    background-repeat: no-repeat;
+	background-size: cover;
+  }
+
+  h1 {
+    color: white; /* Changed text color to white */
+    text-align: center;
+    background-color: #333; 
+    color: white; /* Set text color for headings */
+    padding: 10px;
+  }
+
+  #menu-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; 
+    margin-top: 20px;
+  }
+
+  #menu-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%; /* Adjusted width */
+  }
+
+  .category {
+    margin-bottom: 20px;
+  }
+  
+  .category summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .menu-item {
+    width: calc(25% - 10px);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .menu-item label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .item-quantity {
+    width: 50px;
+    text-align: center;
+  }
+
+  #order-summary {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Adjusted width */
+    margin-left: 20px; 
+  }
+
+  .total {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .discount-options {
+    margin-top: 20px;
+  }
+
+  #submit-btn, #view-stock-btn {
+    margin-top: 20px;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+    font-size: 16px; 
+  }
+</style>
+</head>
+<body>
+
+<img src="logo.jpg" alt="Sari-Sari Store Logo">
+
+<div id="menu-container">
+  <div id="menu-form">
+    <form id="order-form">
+      <h2>TYPE OF ITEMS </h2>
+      
+      <details class="category">
+        <summary>JEANS</summary>
+        <div class="menu-items">
+          <div class="menu-item">
+            <label>
+              <img src="ripped.jpg" alt="RIPPED JEANS">
+              <span class="item-name">RIPPED JEANS</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="250" data-stock="20">
+              <label>PHP.250</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+          
+          <div class="menu-item">
+            <label>
+              <img src="images.jpg" alt="STRAIGHT HIGH WAIST JEANS">
+              <span class="item-name">STRAIGHT HIGH WAIST JEANS</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="450" data-stock="20">
+              <label>PHP.450</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+		  <div class="menu-item">
+            <label>
+              <img src="m.jpg" alt="MEN JEANS">
+              <span class="item-name">MEN JEANS</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="500" data-stock="20">
+              <label>PHP.500</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+          
+          <div class="menu-item">
+            <label>
+              <img src="sk.jpg" alt="SKINNY JEANS MEN">
+              <span class="item-name">RIPPED JEANS MEN</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="550" data-stock="20">
+              <label>PHP.550</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+		  
+          <!--  -->
+        </div>
+      </details>
+	  
+		<details class="category">
+        <summary>TSHIRT </summary>
+        <div class="menu-items">
+          <div class="menu-item">
+            <label>
+              <img src="pulis.jpg" alt="POLICE">
+              <span class="item-name">POLICE</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="200" data-stock="20">
+              <label>PHP.200</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+          
+          <div class="menu-item">
+            <label>
+             <img src="navy.jpg" alt="NAVY">
+              <span class="item-name">NAVY</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="250" data-stock="20">
+              <label>PHP.250</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+		  <div class="menu-item">
+            <label>
+              <img src="airforce.jpg" alt="AIRFORCE">
+              <span class="item-name">AIRFORCE</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="300" data-stock="20">
+              <label>PHP.300</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+          
+          <div class="menu-item">
+            <label>
+             <img src="bfp.jpg" alt="BFP">
+              <span class="item-name">BFP</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="350" data-stock="20">
+              <label>PHP.350</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+		  
+          <!--  -->
+        </div>
+      </details>
+	  
+	  
+		<details class="category">
+        <summary>SANDO </summary>
+        <div class="menu-items">
+          <div class="menu-item">
+            <label>
+               <img src="bs.jpg" alt="BLACK SANDO">
+              <span class="item-name">BLACK SANDO</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="100" data-stock="20">
+              <label>PHP.100</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+          
+          <div class="menu-item">
+            <label>
+                <img src="ns.jpg" alt="NAVY SANDO">
+              <span class="item-name">NAVY SANDO</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="150" data-stock="20">
+              <label>PHP.150</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+		  <div class="menu-item">
+            <label>
+              <img src="ps.jpg" alt="PARADISE SANDO">
+              <span class="item-name">PARADISE SANDO</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="200" data-stock="20">
+              <label>PHP.200</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+          
+          <div class="menu-item">
+            <label>
+              <img src="gs.jpg" alt="GRAY SANDO">
+              <span class="item-name">GRAY SANDO</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="250" data-stock="20">
+              <label>PHP.250</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+		  
+          <!--  -->
+        </div>
+      </details>
+	  
+	  <details class="category">
+        <summary>TOYS </summary>
+        <div class="menu-items">
+          <div class="menu-item">
+            <label>
+               <img src="ft.jpg" alt="FIRE TRUCK">
+              <span class="item-name">FIRE TRUCK</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="600" data-stock="20">
+              <label>PHP.600</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+          
+          <div class="menu-item">
+            <label>
+              <img src="bh.jpg" alt="BACK HOE">
+              <span class="item-name">BACK HOE</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="600" data-stock="20">
+              <label>PHP.700</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+		  <div class="menu-item">
+            <label>
+             <img src="pt.jpg" alt="POLICE CAR">
+              <span class="item-name">POLICE CAR</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="800" data-stock="20">
+              <label>PHP.800</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+          
+          <div class="menu-item">
+            <label>
+              <img src="h.jpg" alt="HELICOPTER">
+              <span class="item-name">HELICOPTER</span>
+              <input type="checkbox" class="item-checkbox" name="product[]" value="900" data-stock="20">
+              <label>PHP.900</label>
+              Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min="1">
+              <div class="item-stock">Stock: 20</div>
+            </label>
+          </div>
+		  
+          <!--  -->
+        </div>
+      </details>
+      <!--  -->
+      
+    </form>
+	 <button type="button" id="view-stock-btn">View Stock</button>
+  </div>
+
+  <div id="order-summary">
+    <h2>CART</h2>
+    <div id="selected-items"></div>
+    <div class="total">
+      Total: <span id="total-amount">0</span>
+    </div>
+    <div class="discount-options">
+      <input type="radio" class="discount-radio" name="discount" value="0" checked> No Discount </br>
+      <input type="radio" class="discount-radio" name="discount" value="0.2"> Senior Citizen (20% off)</br>
+      <input type="radio" class="discount-radio" name="discount" value="0.3"> PWD (30% off)</br>
+      <input type="radio" class="discount-radio" name="discount" value="0.1"> Student (10% off)</br>
+    </div>
+    <button type="button" id="submit-btn">Place Order</button>
+    
+  </div>
+</div>
+
+<script>
+  const checkboxes = document.querySelectorAll('.item-checkbox');
+  const quantities = document.querySelectorAll('.item-quantity');
+  const totalAmount = document.getElementById('total-amount');
+  const submitButton = document.getElementById('submit-btn');
+  const viewStockButton = document.getElementById('view-stock-btn');
+  const selectedItemsDiv = document.getElementById('selected-items');
+  const discountRadios = document.querySelectorAll('.discount-radio');
+
+  checkboxes.forEach((checkbox, index) => {
+      checkbox.addEventListener('change', () => {
+          updateTotal();
+          quantities[index].disabled = !checkbox.checked;
+          if (!checkbox.checked) {
+              quantities[index].value = 0;
+          }
+          updateSelectedItems();
+      });
+      quantities[index].addEventListener('input', () => {
+          if (parseInt(quantities[index].value) > getStock(checkbox)) {
+              alert('Quantity exceeds available stock.');
+              quantities[index].value = getStock(checkbox);
+              quantities[index].value = getStock(checkbox);
+          }
+          updateTotal();
+      });
+  });
+
+  discountRadios.forEach(radio => {
+      radio.addEventListener('change', updateTotal);
+  });
+
+  submitButton.addEventListener('click', () => {
+      const confirmation = confirm('Are you sure you want to submit your order?');
+      if (confirmation) {
+          updateStock();
+          showOrderSummary();
+          resetForm();
+      }
+  });
+
+  viewStockButton.addEventListener('click', () => {
+      // Save the stock data to localStorage and navigate to stock.html
+      updateStockDataInLocalStorage();
+      window.location.href = 'stock.html';
+  });
+
+  function updateTotal() {
+      let total = 0;
+      checkboxes.forEach((checkbox, index) => {
+          if (checkbox.checked) {
+              total += parseInt(quantities[index].value, 10) * parseInt(checkbox.value, 10);
+          }
+      });
+
+      discountRadios.forEach(radio => {
+          if (radio.checked) {
+              const discount = parseFloat(radio.value);
+              total -= total * discount; 
+          }
+      });
+
+      totalAmount.textContent = total.toFixed(2);
+  }
+
+  function updateSelectedItems() {
+      selectedItemsDiv.innerHTML = '';
+      checkboxes.forEach((checkbox, index) => {
+          if (checkbox.checked) {
+              const itemName = checkbox.parentElement.querySelector('.item-name').textContent;
+              const quantity = parseInt(quantities[index].value, 10);
+              const subtotal = quantity * parseInt(checkbox.value, 10);
+              const itemDiv = document.createElement('div');
+              itemDiv.textContent = `${itemName} - Quantity: ${quantity}, Subtotal: ₱${subtotal.toFixed(2)}`;
+              selectedItemsDiv.appendChild(itemDiv);
+          }
+      });
+  }
+
+  function getStock(checkbox) {
+      return parseInt(checkbox.getAttribute('data-stock'), 10);
+  }
+
+  function updateStock() {
+      checkboxes.forEach((checkbox, index) => {
+          if (checkbox.checked) {
+              const currentStock = getStock(checkbox);
+              const newStock = currentStock - parseInt(quantities[index].value, 10);
+              checkbox.setAttribute('data-stock', newStock);
+              checkbox.parentElement.querySelector('.item-stock').textContent = `Stock: ${newStock}`;
+          }
+      });
+      updateStockDataInLocalStorage();
+  }
+
+  function updateStockDataInLocalStorage() {
+      const stockData = {};
+
+      checkboxes.forEach((checkbox) => {
+          const itemName = checkbox.parentElement.querySelector('.item-name').textContent.toLowerCase().replace(/ /g, '_');
+          const stock = getStock(checkbox);
+          stockData[itemName] = stock;
+      });
+
+      localStorage.setItem('stockData', JSON.stringify(stockData));
+  }
+
+  function resetForm() {
+      checkboxes.forEach((checkbox, index) => {
+          checkbox.checked = false;
+          quantities[index].value = 1;
+          quantities[index].disabled = true;
+      });
+      updateTotal();
+      updateSelectedItems();
+  }
+
+  function showOrderSummary() {
+      let summary = 'Order Summary:\n\n';
+      let overallTotal = 0;
+      let discountAmount = 0; 
+      checkboxes.forEach((checkbox, index) => {
+          if (checkbox.checked) {
+              const itemName = checkbox.parentElement.querySelector('.item-name').textContent;
+              const quantity = parseInt(quantities[index].value, 10);
+              const subtotal = quantity * parseInt(checkbox.value, 10);
+              summary += `${itemName} - Quantity: ${quantity}, Subtotal: ₱${subtotal.toFixed(2)}\n`;
+              overallTotal += subtotal;
+          }
+      });
+     
+      discountRadios.forEach(radio => {
+          if (radio.checked) {
+              const discountPercent = parseFloat(radio.value);
+              discountAmount = overallTotal * discountPercent;
+          }
+      });
+
+      overallTotal -= discountAmount;
+      summary += `\nDiscount Amount: ₱${discountAmount.toFixed(2)}\n\nOverall Total: ₱${overallTotal.toFixed(2)}\n\nThank you for your order!`;
+      alert(summary);
+  }
+</script>
+
+</body>
+</html>

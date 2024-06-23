@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock</title>
+<style>
+  /* Internal CSS */
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('bgS.jpg'); /* Set the background image */
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+	color:white;
+  }
+
+  table {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Style for the back button */
+  .back-button {
+    display: block;
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .back-button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<h1>Product Stock</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Stock Available</th>
+    </tr>
+  </thead>
+  <tbody id="stock-table-body">
+    <!-- Stock items will be dynamically added here -->
+  </tbody>
+</table>
+
+<!-- Back button to navigate to index.html -->
+<a href="index.html" class="back-button">Back</a>
+
+<script>
+  // Retrieve stock data from local storage
+  const stockData = JSON.parse(localStorage.getItem('stockData'));
+
+  // Get the table body element to append stock items
+  const stockTableBody = document.getElementById('stock-table-body');
+
+  // Check if there is stock data available
+  if (stockData) {
+    // Loop through each product in the stock data
+    Object.keys(stockData).forEach(product => {
+      const stock = stockData[product];
+      // Create a table row element to represent each product with its stock
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${product.replace(/_/g, ' ').toUpperCase()}</td>
+        <td>${stock}</td>
+      `;
+      // Append the row to the table body
+      stockTableBody.appendChild(row);
+    });
+  } else {
+    // If there is no stock data available, display a message
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td colspan="2">No stock available.</td>
+    `;
+    stockTableBody.appendChild(row);
+  }
+</script>
+
+</body>
+</html>

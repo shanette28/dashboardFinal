@@ -1,0 +1,30 @@
+body{
+	background-color: white;
+}
+p{
+	text-align: center;
+	color: darkred;
+	font-family:"Arial";
+}
+h1{
+	font-family: "Arial";
+	color: darkred;
+	font-weight: bolder;
+	text-align: center;
+
+}
+h2{
+	font-family: "Arial";
+	text-align: center;
+}
+caption{
+	font-family:"Arial";
+	background-color:darkred;
+	color: white;
+	text-align:center;	
+	font-weight: bold;
+}
+td{
+	font-family:"Arial";
+	font-size:15px;
+}

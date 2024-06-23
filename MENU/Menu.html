@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Menu</title>
+<style>
+  /* Internal CSS */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: red; /* Changed background color to red */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	 background-image: url('bgrep.jpg'); /* Set the background image */
+  background-repeat: repeat;
+  }
+
+  h1 {
+    color: white; /* Changed text color to white */
+    text-align: center;
+	background-color: #333; /* Set background color for headings */
+  color: white; /* Set text color for headings */
+  padding: 10px;
+  }
+
+  #menu-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Added max-width for better responsiveness */
+    margin-top: 20px;
+  }
+
+  #menu-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%; /* Adjusted width */
+  }
+
+  .category {
+    margin-bottom: 20px;
+  }
+  
+  .category summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .menu-item {
+    width: calc(25% - 10px);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .menu-item label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .item-quantity {
+    width: 50px;
+    text-align: center;
+  }
+
+  #order-summary {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Adjusted width */
+    margin-left: 20px; /* Added margin to separate from the form */
+	/* position: fixed; 
+	top: 20%;
+  right: 20px; /Adjust right position as needed */
+  }
+
+  .total {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  #submit-btn {
+    margin-top: 20px;
+     display: block; /* Ensure block-level display */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+</style>
+</head>
+<body>
+
+<h1>Welcome to Our Restaurant Menu</h1> <!-- Moved heading to the top -->
+
+<div id="menu-container">
+  <div id="menu-form">
+    <form id="order-form">
+
+     <h2>Menu</h2>
+	 
+<details class="category">
+    <summary>Main Dishes</summary>
+    <div class="menu-items">
+      <div class="menu-item">
+        <label>
+          <img src="sb.jpg" alt="Main Dish 1">
+          <span class="item-name">Sinigang na Baboy</span>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="600">
+		  <label>PHP.600</label>
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+      <div class="menu-item">
+        <label>
+          <img src="bs.jpg" alt="Main Dish 2">
+          <span class="item-name">Beef Steak</span>
+		  <label>PHP.450</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="450">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  <div class="menu-item">
+        <label>
+          <img src="b.jpg" alt="Main Dish 2">
+          <span class="item-name">Bulalo</span>
+		  <label>PHP.500</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="500">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  <div class="menu-item">
+        <label>
+          <img src="ca.jpg" alt="Main Dish 2">
+          <span class="item-name">Chicken Adobo</span>
+		  <label>₱300.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="300">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  <div class="menu-item">
+        <label>
+          <img src="kk.jpg" alt="Main Dish 2">
+          <span class="item-name">Kare-Kare</span>
+		  <label>₱700.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="700">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+          </div>
+  </details>
+
+<details class="category">
+    <summary>Vegetable Dish</summary>
+    <div class="menu-items">
+      <div class="menu-item">
+        <label>
+          <img src="c.jpg" alt="Main Dish 1">
+          <span class="item-name">Chop Suey</span>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="250">
+		  <label>₱250.00</label>
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+      <div class="menu-item">
+        <label>
+          <img src="bb.jpg" alt="Main Dish 2">
+          <span class="item-name">Beef Brocolli</span>
+		  <label>₱450.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="300">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  <div class="menu-item">
+        <label>
+          <img src="b.jpg" alt="Main Dish 2">
+          <span class="item-name">Pinakpakbet</span>
+		  <label>₱200.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="200">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+      
+    </div>
+  </details>
+  
+  
+
+<details class="category">
+    <summary>Drinks</summary>
+    <div class="menu-items">
+      <div class="menu-item">
+        <label>
+          <img src="cc.jpg" alt="Main Dish 1">
+          <span class="item-name">Coke in Can</span>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="65">
+		  <label>₱65.00</label>
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+      <div class="menu-item">
+        <label>
+          <img src="bl.jpg" alt="Main Dish 2">
+          <span class="item-name">Blue Lemonade Pitcher</span>
+		  <label>₱450.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="150">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  <div class="menu-item">
+        <label>
+          <img src="it.jpg" alt="Main Dish 2">
+          <span class="item-name">Iced Tea Pitcher</span>
+		  <label>₱150.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="150">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+ 
+    </div>
+  </details>
+  
+ 
+
+<details class="category">
+    <summary>Dessert</summary>
+    <div class="menu-items">
+      <div class="menu-item">
+        <label>
+          <img src="hh.jpeg" alt="Main Dish 1">
+          <span class="item-name">Halo-Halo</span>
+		  <label>₱90.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="90">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+      <div class="menu-item">
+        <label>
+          <img src="m.jpg" alt="Main Dish 2">
+          <span class="item-name">Mais Con Ice</span>
+		  <label>₱89.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="89">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  <div class="menu-item">
+        <label>
+          <img src="l.jpg" alt="Main Dish 2">
+          <span class="item-name">Leche Flan</span>
+		  <label>₱75.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="75">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+      <!-- Add more menu items here -->
+    </div>
+  </details>
+  
+  <!-- Add more categories here -->
+
+<details class="category">
+    <summary>Add-ons</summary>
+    <div class="menu-items">
+      <div class="menu-item">
+        <label>
+          <img src="gr.jpeg" alt="Main Dish 1">
+          <span class="item-name">Garlic Rice</span>
+		  <label>₱35.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="35">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+      <div class="menu-item">
+        <label>
+          <img src="s.jpg" alt="Main Dish 2">
+          <span class="item-name">Lumpian Shanghai</span>
+		  <label>₱150.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="150">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  <div class="menu-item">
+        <label>
+          <img src="f.jpeg" alt="Main Dish 2">
+          <span class="item-name">Fries</span>
+		  <label>₱100.00</label>
+          <input type="checkbox" class="item-checkbox" name="main_dish[]" value="100">
+          Quantity: <input type="number" class="item-quantity" name="quantity[]" value="1" disabled min=1>
+        </label>
+      </div>
+	  
+
+    </div>
+  </details>
+
+
+      
+    </form>
+  </div>
+
+  <div id="order-summary">
+    <h2>Order Summary</h2>
+    <div id="selected-items"></div>
+		<div class="total">
+			Total: <span id="total-amount">0</span>
+		</div>
+    <button type="button" id="submit-btn">Place Order</button>
+  </div>
+</div>
+
+<script>
+  // JavaScript for calculating total amount
+  const checkboxes = document.querySelectorAll('.item-checkbox');
+  const quantities = document.querySelectorAll('.item-quantity');
+  const totalAmount = document.getElementById('total-amount');
+  const submitButton = document.getElementById('submit-btn');
+  const selectedItemsDiv = document.getElementById('selected-items');
+
+  checkboxes.forEach((checkbox, index) => {
+    checkbox.addEventListener('change', () => {
+      updateTotal();
+      quantities[index].disabled = !checkbox.checked;
+      if (!checkbox.checked) {
+        quantities[index].value = 0;
+      }
+      updateSelectedItems();
+    });
+    quantities[index].addEventListener('input', () => {
+      updateTotal();
+      updateSelectedItems();
+    });
+  });
+
+  submitButton.addEventListener('click', () => {
+    const confirmation = confirm('Are you sure you want to submit your order?');
+    if (confirmation) {
+      showOrderSummary();
+    }
+  });
+
+  function updateTotal() {
+    let total = 0;
+    checkboxes.forEach((checkbox, index) => {
+      if (checkbox.checked) {
+        total += parseInt(quantities[index].value, 10) * parseInt(checkbox.value, 10);
+      }
+    });
+    totalAmount.textContent = total.toFixed(2);
+  }
+
+  function updateSelectedItems() {
+    selectedItemsDiv.innerHTML = '';
+    checkboxes.forEach((checkbox, index) => {
+      if (checkbox.checked) {
+        const itemName = checkbox.parentElement.querySelector('.item-name').textContent;
+        const quantity = parseInt(quantities[index].value, 10);
+        const subtotal = quantity * parseInt(checkbox.value, 10);
+        const itemDiv = document.createElement('div');
+        itemDiv.textContent = `${itemName} - Quantity: ${quantity}, Subtotal: ₱.${subtotal.toFixed(2)}`;
+        selectedItemsDiv.appendChild(itemDiv);
+      }
+    });
+  }
+
+  function showOrderSummary() {
+    let summary = 'Order Summary:\n\n';
+    let overallTotal = 0;
+    checkboxes.forEach((checkbox, index) => {
+      if (checkbox.checked) {
+        const itemName = checkbox.parentElement.querySelector('.item-name').textContent;
+        const quantity = parseInt(quantities[index].value, 10);
+        const subtotal = quantity * parseInt(checkbox.value, 10);
+        summary += `${itemName} - Quantity: ${quantity}, Subtotal: ₱.${subtotal.toFixed(2)}\n`;
+        overallTotal += subtotal;
+      }
+    });
+    summary += `\nOverall Total: ₱.${overallTotal.toFixed(2)}\n\nThank you for your order!`;
+    alert(summary);
+  }
+</script>
+
+</body>
+</html>
